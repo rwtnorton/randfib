@@ -1,14 +1,22 @@
+use clap::Parser;
 use num_bigint::BigUint;
 use num_traits::{Zero, One};
 use rand::seq::IteratorRandom;
 
+#[derive(Parser, Debug)]
+#[clap(author, version, about, long_about = None)]
+struct Args {
+    #[clap(short, default_value_t = 20)]
+    n: u64,
+}
+
 fn main() {
-    println!("Hello, world!");
     let mut rng = rand::thread_rng();
-    let vs = fibs(50);
-    for v in &vs {
-        println!("{}", v);
-    }
+    let args = Args::parse();
+    let vs = fibs(args.n);
+    // for v in &vs {
+    //     println!("{}", v);
+    // }
     let selection = vs.iter().choose(&mut rng).unwrap();
     println!("{}", selection);
 }
