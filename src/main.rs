@@ -6,7 +6,7 @@ use rand::Rng;
 #[derive(Parser, Debug)]
 #[clap(author, version, about, long_about = None)]
 struct Args {
-    #[clap(short, default_value_t = 20)]
+    #[clap(short, default_value_t = 10)]
     n: u64,
 }
 
